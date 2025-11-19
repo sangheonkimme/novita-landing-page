@@ -1,27 +1,43 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  FileText,
+  Folder,
+  Image as ImageIcon,
+  Search,
+  Plus,
+  Pin,
+  Hash,
+  User,
+  Briefcase,
+  GraduationCap,
+  LayoutGrid,
+  Settings,
+  Home as HomeIcon,
+  Bell,
+} from "lucide-react";
 
 const features = [
   {
-    icon: "📝",
+    icon: <FileText className="h-8 w-8 text-[#6c4cf5]" />,
     title: "풍부한 노트 작성",
     description:
       "일반 텍스트는 물론, 할 일을 관리할 수 있는 체크리스트까지 한 번에 기록하세요.",
   },
   {
-    icon: "📂",
+    icon: <Folder className="h-8 w-8 text-[#6c4cf5]" />,
     title: "스마트한 정리",
     description:
       "폴더와 태그로 원하는 방식으로 분류하고, 중요한 노트는 상단에 고정할 수 있습니다.",
   },
   {
-    icon: "🖼️",
+    icon: <ImageIcon className="h-8 w-8 text-[#6c4cf5]" />,
     title: "이미지 첨부",
     description:
       "갤러리나 카메라로 촬영한 사진을 바로 추가해 더 생생한 기록을 남겨보세요.",
   },
   {
-    icon: "🔍",
+    icon: <Search className="h-8 w-8 text-[#6c4cf5]" />,
     title: "강력한 검색",
     description:
       "제목, 내용, 태그를 한 번에 검색해 필요한 노트를 순식간에 찾을 수 있습니다.",
@@ -54,7 +70,7 @@ export default function Home() {
           <div className="space-y-8">
             <div className="space-y-4">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#6c4cf5]">
-                로컬에서 안전하게
+                나만의 안전한 기록 공간
               </p>
               <h1 className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
                 당신의 모든 생각을 쉽고 아름답게 기록하세요.
@@ -92,30 +108,139 @@ export default function Home() {
           </div>
           <div className="relative flex justify-center">
             <div className="absolute -inset-6 rounded-[42px] bg-[#d5ccff]/60 blur-3xl" />
-            <div className="relative h-[520px] w-[280px] rounded-[38px] bg-white p-5 shadow-[0_25px_60px_rgba(18,11,54,0.15)]">
-              <div className="mx-auto mb-4 h-1 w-16 rounded-full bg-slate-200" />
-              <p className="text-sm font-semibold text-slate-500">Novita</p>
-              <div className="mt-5 space-y-4">
-                <div className="rounded-3xl bg-[#6c4cf5] p-4 text-white">
-                  <p className="text-sm font-medium">Available Space</p>
-                  <p className="text-2xl font-semibold">0.00 GB of 25 GB</p>
-                  <div className="mt-3 h-2 rounded-full bg-white/30">
-                    <span className="block h-2 w-2 rounded-full bg-white" />
-                  </div>
-                </div>
-                <div className="flex max-h-[240px] flex-col gap-3 overflow-hidden rounded-3xl bg-slate-50/60 p-3 shadow-inner">
-                  <PreviewCard title="개인" subtitle="2 files" accent="#cfd8ff" />
-                  <PreviewCard title="기타" subtitle="0 files" accent="#ecd9ff" />
-                  <PreviewCard title="업무" subtitle="0 files" accent="#d9f1e2" />
-                  <PreviewCard title="학업" subtitle="0 files" accent="#ffe8cf" />
+            <div className="relative h-[640px] w-[320px] overflow-hidden rounded-[40px] bg-[#f7f4ff] border-[8px] border-white shadow-[0_25px_60px_rgba(18,11,54,0.15)]">
+              {/* Status Bar */}
+              <div className="flex justify-between px-6 pt-4">
+                <div className="text-xs font-semibold text-slate-900">10:32</div>
+                <div className="flex gap-1.5">
+                  <div className="h-3 w-3 rounded-full bg-slate-900/20" />
+                  <div className="h-3 w-3 rounded-full bg-slate-900/20" />
+                  <div className="h-3 w-3 rounded-full bg-slate-900/20" />
                 </div>
               </div>
-              <div className="mt-6 rounded-2xl bg-slate-50 p-4">
-                <p className="text-sm font-semibold text-slate-600">오늘의 노트</p>
-                <p className="mt-2 text-xs text-slate-500">
-                  124124124124 · 2025.11.12
-                </p>
-                <p className="text-sm text-slate-700">123124124</p>
+
+              {/* Scrollable Content Area */}
+              <div className="h-full overflow-y-auto pb-24 scrollbar-hide">
+                {/* Header */}
+                <div className="mt-4 flex items-center justify-between px-6">
+                  <div>
+                    <p className="text-xs text-slate-500">Welcome back,</p>
+                    <p className="text-xl font-bold text-slate-900">Novita</p>
+                  </div>
+                  <div className="flex gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm">
+                      <Bell className="h-4 w-4 text-slate-700" />
+                    </div>
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#e6e3ff] text-[#6c4cf5]">
+                      <User className="h-4 w-4" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Storage Card */}
+                <div className="mt-6 px-6">
+                  <div className="relative overflow-hidden rounded-3xl bg-[#6c4cf5] p-5 text-white shadow-lg shadow-[#6c4cf5]/20">
+                    <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-white/10 blur-2xl" />
+                    <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-full bg-white/10 blur-2xl" />
+                    
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
+                        <div className="h-5 w-5 rounded-full border-2 border-white/80" />
+                      </div>
+                      <div>
+                        <p className="text-xs text-white/80">Available Space</p>
+                        <p className="text-sm font-semibold">0.00 GB of 25 GB Used</p>
+                      </div>
+                    </div>
+                    <div className="mt-4 h-1.5 w-full rounded-full bg-black/20">
+                      <div className="h-full w-[2%] rounded-full bg-white" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Quick Actions */}
+                <div className="mt-6 grid grid-cols-3 gap-3 px-6">
+                  <div className="flex flex-col items-center gap-2 rounded-2xl bg-white p-3 shadow-sm">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f0f1ff] text-[#6c4cf5]">
+                      <Plus className="h-4 w-4" />
+                    </div>
+                    <span className="text-[11px] font-medium text-slate-700">새 노트</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2 rounded-2xl bg-white p-3 shadow-sm">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f0f1ff] text-[#6c4cf5]">
+                      <Pin className="h-4 w-4" />
+                    </div>
+                    <span className="text-[11px] font-medium text-slate-700">고정됨</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2 rounded-2xl bg-white p-3 shadow-sm">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f0f1ff] text-[#6c4cf5]">
+                      <Hash className="h-4 w-4" />
+                    </div>
+                    <span className="text-[11px] font-medium text-slate-700">태그 관리</span>
+                  </div>
+                </div>
+
+                {/* My Folders */}
+                <div className="mt-8 px-6 pb-6">
+                  <h3 className="text-lg font-bold text-slate-900">나의 폴더</h3>
+                  <p className="text-xs text-slate-500">노트를 상황에 맞게 정리해보세요.</p>
+                  
+                  <div className="mt-4 grid grid-cols-2 gap-3">
+                    <FolderCard 
+                      icon={<User className="h-5 w-5 text-[#3b82f6]" />}
+                      title="개인"
+                      count="2 files"
+                      bg="bg-[#e0f2fe]"
+                    />
+                    <FolderCard 
+                      icon={<ImageIcon className="h-5 w-5 text-[#a855f7]" />}
+                      title="기타"
+                      count="0 files"
+                      bg="bg-[#f3e8ff]"
+                    />
+                    <FolderCard 
+                      icon={<Briefcase className="h-5 w-5 text-[#22c55e]" />}
+                      title="업무"
+                      count="0 files"
+                      bg="bg-[#dcfce7]"
+                    />
+                    <FolderCard 
+                      icon={<GraduationCap className="h-5 w-5 text-[#f97316]" />}
+                      title="학업"
+                      count="0 files"
+                      bg="bg-[#ffedd5]"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Nav */}
+              <div className="absolute bottom-0 left-0 right-0 flex items-center justify-around bg-white px-6 pb-6 pt-4 shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+                <div className="flex flex-col items-center gap-1">
+                  <div className="flex h-8 w-12 items-center justify-center rounded-full bg-[#f0f1ff]">
+                    <HomeIcon className="h-5 w-5 text-[#6c4cf5]" />
+                  </div>
+                  <span className="text-[10px] font-medium text-slate-900">홈</span>
+                </div>
+                <div className="flex flex-col items-center gap-1 text-slate-400">
+                  <Search className="h-5 w-5" />
+                  <span className="text-[10px] font-medium">검색</span>
+                </div>
+                <div className="flex flex-col items-center gap-1 text-slate-400">
+                  <LayoutGrid className="h-5 w-5" />
+                  <span className="text-[10px] font-medium">보드</span>
+                </div>
+                <div className="flex flex-col items-center gap-1 text-slate-400">
+                  <Settings className="h-5 w-5" />
+                  <span className="text-[10px] font-medium">설정</span>
+                </div>
+                
+                {/* Floating Action Button */}
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#6c4cf5] shadow-lg shadow-[#6c4cf5]/40">
+                    <Plus className="h-6 w-6 text-white" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -168,20 +293,23 @@ export default function Home() {
   );
 }
 
-type PreviewCardProps = {
+type FolderCardProps = {
+  icon: React.ReactNode;
   title: string;
-  subtitle: string;
-  accent: string;
+  count: string;
+  bg: string;
 };
 
-function PreviewCard({ title, subtitle, accent }: PreviewCardProps) {
+function FolderCard({ icon, title, count, bg }: FolderCardProps) {
   return (
-    <div
-      className="rounded-2xl border border-slate-100 px-4 py-3"
-      style={{ backgroundColor: accent }}
-    >
-      <p className="text-sm font-semibold text-slate-900">{title}</p>
-      <p className="text-[11px] text-slate-600">{subtitle}</p>
+    <div className={`flex flex-col gap-3 rounded-3xl p-4 ${bg}`}>
+      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/60">
+        {icon}
+      </div>
+      <div>
+        <p className="font-semibold text-slate-900">{title}</p>
+        <p className="text-xs text-slate-500">{count}</p>
+      </div>
     </div>
   );
 }
